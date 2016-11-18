@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat con firebase</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css">
+    <style>
+        #login {
+            height: 100vh;
+            position: fixed;
+            z-index: 10;
+            width: 100%;
+        }
+        #app {
+            height: 100vh;
+            width: 100%;
+        }
+        .chat {
+            width: 300px;
+            display: inline-block;
+            margin-right: 1em;
+        }
+        .messages {
+            height: 300px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div id="login" class="white row middle-xs center-xs">
+        <div class="col-xs-12">
+            <div class="box">
+                <p>Antes de entrar al chat, tienes que iniciar sesión</p>
+                <button id="start-login" class="btn btn-raised red white-text">Iniciar sesión con Google</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="app" class="row">
+        <div class="col-md-3 col-xs-12">
+            <div class="box">
+                <div class="indigo white-text" style="padding: 10px 15px">
+                    Usuarios conectados
+                </div>
+                <ul class="collection" id="users">
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs">
+            <div class="box" id="chats"></div>
+        </div>
+
+    </div>
+
+    <script type="text/x-custom-template" id="hidden-template">
+        <div class="chat" id="${id}">
+            <ul class="messages collection" style="height: 400px">
+
+            </ul>
+            <form class="form">
+                <input placeholder="mensaje" type="text" class="mensaje">
+                <input type="submit" class="btn btn-raised indigo white-text" value="enviar">
+            </form>
+        </div>
+    </script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="./chat.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
